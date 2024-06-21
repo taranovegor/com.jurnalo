@@ -1,0 +1,6 @@
+debug: false
+http:
+    port: 5341
+database:
+    uri: mongodb://localhost:27017/jurnalo
+    name: jurnalo

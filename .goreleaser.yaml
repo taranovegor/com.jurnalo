@@ -1,0 +1,39 @@
+project_name: jurnalo
+
+before:
+  hooks:
+    - npm --prefix web ci
+    - npm --prefix web run build
+
+builds:
+  - id: linux-amd64
+    env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - amd64
+  - id: linux-arm64
+    env:
+      - CGO_ENABLED=1
+      - CC=aarch64-linux-gnu-gcc
+    goos:
+      - linux
+    goarch:
+      - arm64
+
+nfpms:
+  - maintainer: Egor Taranov <dev@taranovegor.com>
+    description: Collect and monitor logs
+    homepage: https://github.com/taranovegor/jurnalo
+    license: MIT
+    formats:
+      - deb
+    dependencies:
+      - systemd
+    contents:
+      - src: pkg/systemd/jurnalo.service
+        dst: /etc/systemd/system/jurnalo.service
+    scripts:
+      postinstall: pkg/scripts/postinstall.sh
+      preremove: pkg/scripts/preremove.sh

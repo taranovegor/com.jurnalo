@@ -1,0 +1,13 @@
+[Unit]
+Description=jurnalo
+After=systemd-journald
+
+[Service]
+ExecStart=/usr/bin/jurnalo
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
