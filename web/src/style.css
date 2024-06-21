@@ -1,0 +1,14 @@
+@import 'primeflex/primeflex.css';
+@import 'primeicons/primeicons.css';
+
+:root {
+    font-family: monospace;
+}
+
+body {
+    margin: 10px 15px;
+}
+
+.layout-wrapper {
+    min-height: calc(100vh - 30px);
+}
