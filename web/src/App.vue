@@ -79,7 +79,7 @@ export default {
     },
     methods: {
         loadPage(e) {
-            axios.get('http://slave.dot:5341/api/entry', {params: {offset: e?.first ?? 0, limit: this.perPage}}).then(response => {
+            axios.get('/api/entry', {params: {offset: e?.first ?? 0, limit: this.perPage}}).then(response => {
                 this.items = response.data.items
                 this.totalRows = response.data.totalCount
                 this.expanded = []
