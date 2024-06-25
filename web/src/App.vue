@@ -29,8 +29,7 @@
                                 <span class="entry__identifier ml-2 vertical-align-middle">{{ slotProps.data._EXE ?? slotProps.data.SYSLOG_IDENTIFIER ?? 'N/A' }}</span>
                             </div>
                             <div class="entry__body mt-1">
-                                <span class="entry__message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi aut debitis eos exercitationem fuga hic impedit ipsa numquam, odio pariatur quod recusandae sequi tenetur unde veniam voluptates. Ad aliquam asperiores deleniti eos hic itaque nulla obcaecati reiciendis sed voluptate. Architecto consectetur debitis fugiat minus mollitia nemo quae tempora voluptatem.</span>
-
+                                <span class="entry__message">{{ slotProps.data.MESSAGE ?? 'N/A' }}</span>
                             </div>
                         </template>
                     </Column>
