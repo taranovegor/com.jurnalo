@@ -14,13 +14,13 @@ import (
 	"time"
 )
 
-const Version = "0.1.1"
+var version = "unknown"
 
 //go:embed web/dist
 var app embed.FS
 
 func main() {
-	fmt.Println(fmt.Sprintf("ĵurnalo! Version: %s", Version))
+	fmt.Println(fmt.Sprintf("ĵurnalo! version: %s", version))
 
 	ctn, err := container.Init()
 	if err != nil {
