@@ -3,6 +3,8 @@ package http
 import (
 	"context"
 	"github.com/taranovegor/jurnalo/internal/domain"
+	"github.com/taranovegor/jurnalo/internal/model/request"
+	"github.com/taranovegor/jurnalo/internal/model/response"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"net/http"
 )
@@ -19,13 +21,13 @@ func NewEntryHandler(repository domain.EntryRepository) *EntryHandler {
 }
 
 func (h EntryHandler) List(rw http.ResponseWriter, req *http.Request) {
-	paginator := domain.Paginator{}
+	paginator := request.Paginator{}
 	parseQuery(req, &paginator)
 	list, totalCount, err := h.repository.List(context.TODO(), paginator)
 	if err != nil {
 		errno(rw, http.StatusInternalServerError, err.Error())
 	} else {
-		resp(rw, http.StatusOK, domain.NewPaginatedFromPaginator(paginator, totalCount, list))
+		resp(rw, http.StatusOK, response.NewPaginatedFromPaginator(paginator, totalCount, list))
 	}
 }
 

@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"github.com/taranovegor/jurnalo/internal/domain"
+	"github.com/taranovegor/jurnalo/internal/model/request"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -38,7 +39,7 @@ func (r entryRepository) Get(ctx context.Context, id primitive.ObjectID) (*domai
 	return &entry, err
 }
 
-func (r entryRepository) List(ctx context.Context, paginator domain.Paginator) ([]domain.Entry, int64, error) {
+func (r entryRepository) List(ctx context.Context, paginator request.Paginator) ([]domain.Entry, int64, error) {
 	var entries []domain.Entry
 
 	filter := bson.D{}

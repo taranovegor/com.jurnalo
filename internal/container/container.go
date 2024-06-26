@@ -8,7 +8,6 @@ import (
 	"github.com/taranovegor/jurnalo/internal/handler/journal"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"time"
 )
 
 const (
@@ -45,7 +44,7 @@ func build(builder *di.Builder) di.Container {
 		Name: JournalReader,
 		Build: func(ctn di.Container) (interface{}, error) {
 			return sdjournal.NewJournalReader(sdjournal.JournalReaderConfig{
-				Since: time.Duration(-1) * time.Minute,
+				NumFromTail: 0,
 				Formatter: func(entry *sdjournal.JournalEntry) (string, error) {
 					return ctn.Get(HandlerJournal).(*journal.Handler).Format(entry)
 				},

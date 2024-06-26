@@ -1,9 +1,6 @@
-package domain
+package response
 
-type Paginator struct {
-	Offset int64 `schema:"offset,default:0"`
-	Limit  int64 `schema:"limit,default:10"`
-}
+import "github.com/taranovegor/jurnalo/internal/model/request"
 
 type Paginated struct {
 	TotalCount int64       `json:"totalCount"`
@@ -21,6 +18,6 @@ func NewPaginated(totalCount int64, limit int64, offset int64, items interface{}
 	}
 }
 
-func NewPaginatedFromPaginator(p Paginator, totalCount int64, items interface{}) Paginated {
+func NewPaginatedFromPaginator(p request.Paginator, totalCount int64, items interface{}) Paginated {
 	return NewPaginated(totalCount, p.Limit, p.Offset, items)
 }
