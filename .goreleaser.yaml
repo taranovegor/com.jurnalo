@@ -1,3 +1,5 @@
+version: 2
+
 project_name: jurnalo
 
 before:
@@ -32,8 +34,8 @@ nfpms:
     dependencies:
       - systemd
     contents:
-      - src: pkg/systemd/jurnalo.service
+      - src: build/systemd/jurnalo.service
         dst: /etc/systemd/system/jurnalo.service
     scripts:
-      postinstall: pkg/scripts/postinstall.sh
-      preremove: pkg/scripts/preremove.sh
+      postinstall: build/scripts/postinstall.sh
+      preremove: build/scripts/preremove.sh
